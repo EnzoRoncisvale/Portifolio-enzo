@@ -86,23 +86,30 @@
 
   <!-- Top Sticky Navigation Bar -->
   <header class="sticky top-0 z-50 backdrop-blur-2xl bg-[#05070b]/80 border-b border-slate-800/80 transition-all duration-300" id="navbar">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10 gap-3 xl:gap-6">
       
-      <!-- Brand Logo -->
-      <a href="#inicio" class="flex items-center gap-3.5 group">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-cyanAccent-400 p-[1.5px] shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
-          <div class="w-full h-full bg-[#05070b] rounded-[14px] flex items-center justify-center font-display font-extrabold text-white text-base">
-            ER
+      <!-- Brand Logo ("ER" & Enzo Roncisvale) -->
+      <a href="#inicio" class="brand-link flex items-center gap-3.5 group flex-shrink-0 select-none py-1" aria-label="Enzo Roncisvale - Início">
+        <!-- Monogram ER Badge with Holographic Glow Border -->
+        <div class="brand-badge rounded-2xl p-[1.5px]">
+          <div class="brand-badge-inner">
+            <span class="brand-badge-text">ER</span>
           </div>
         </div>
-        <div>
-          <span class="font-display font-bold text-base text-white group-hover:text-brand-300 transition-colors">Enzo Roncisvale</span>
-          <span class="block text-[11px] text-cyanAccent-400 font-semibold tracking-wide uppercase">Banco de Dados • Dados &amp; Sistemas</span>
+
+        <!-- Name & Subtitle Stack (Anti-squish & No-wrap) -->
+        <div class="brand-text">
+          <span class="brand-name">
+            Enzo Roncisvale
+          </span>
+          <span class="brand-subtitle">
+            <span class="brand-live-dot"></span>Banco de Dados • Dados &amp; Sistemas
+          </span>
         </div>
       </a>
 
       <!-- Desktop Nav Links -->
-      <nav class="hidden lg:flex items-center gap-6">
+      <nav class="hidden lg:flex items-center gap-4 xl:gap-6 flex-shrink min-w-0">
         <a href="#inicio" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Início</a>
         <a href="#projetos" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Projetos Vercel</a>
         <a href="#sql-playground" class="text-xs uppercase tracking-wider font-semibold text-cyanAccent-400 hover:text-cyanAccent-300 flex items-center gap-1.5 transition-colors">

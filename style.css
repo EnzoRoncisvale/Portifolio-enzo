@@ -93,6 +93,156 @@ body {
   100% { transform: rotate(360deg); }
 }
 
+/* ==========================================================================
+   TOPBAR BRAND IDENTITY ("ER" & ENZO RONCISVALE)
+   ========================================================================== */
+.brand-link {
+  flex-shrink: 0 !important;
+  text-decoration: none !important;
+  outline: none;
+}
+
+.brand-badge {
+  flex-shrink: 0 !important;
+  width: 44px;
+  height: 44px;
+  background: linear-gradient(135deg, #4f46e5 0%, #6366f1 45%, #06b6d4 100%);
+  box-shadow: 0 0 16px -2px rgba(99, 102, 241, 0.35), 0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+}
+
+.brand-badge::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: inherit;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 60%);
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.brand-badge-inner {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 30% 30%, #0d1527 0%, #05070b 100%);
+  border-radius: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.15), inset 0 -1px 2px rgba(0, 0, 0, 0.8);
+  transition: all 0.3s ease;
+}
+
+.brand-badge-text {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-weight: 900;
+  font-size: 15px;
+  letter-spacing: -0.04em;
+  background: linear-gradient(135deg, #ffffff 0%, #e0e7ff 55%, #67e8f9 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+  transition: all 0.3s ease;
+}
+
+.brand-link:hover .brand-badge {
+  transform: scale(1.06) translateY(-1px);
+  box-shadow: 0 0 24px 2px rgba(99, 102, 241, 0.55), 0 0 14px rgba(6, 182, 212, 0.4);
+}
+
+.brand-link:hover .brand-badge-inner {
+  background: radial-gradient(circle at 30% 30%, #131c35 0%, #070a12 100%);
+}
+
+.brand-link:hover .brand-badge-text {
+  background: linear-gradient(135deg, #ffffff 0%, #a5b4fc 50%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-text {
+  flex-shrink: 0 !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brand-name {
+  font-family: 'Plus Jakarta Sans', -apple-system, sans-serif;
+  font-weight: 800;
+  font-size: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  white-space: nowrap !important;
+  transition: color 0.25s ease, text-shadow 0.25s ease;
+}
+
+.brand-link:hover .brand-name {
+  color: #c7d2fe;
+  text-shadow: 0 0 12px rgba(199, 210, 254, 0.35);
+}
+
+.brand-subtitle {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #22d3ee;
+  white-space: nowrap !important;
+  line-height: 1.3;
+  margin-top: 2px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* Micro live pulse dot next to subtitle */
+.brand-live-dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #34d399;
+  box-shadow: 0 0 8px #34d399;
+  flex-shrink: 0;
+  animation: pulseBrandDot 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulseBrandDot {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.35;
+    transform: scale(0.85);
+  }
+}
+
+@media (max-width: 440px) {
+  .brand-badge {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+  .brand-badge-inner {
+    border-radius: 10px;
+  }
+  .brand-badge-text {
+    font-size: 13px;
+  }
+  .brand-name {
+    font-size: 14.5px;
+  }
+  .brand-subtitle {
+    font-size: 9.5px;
+    letter-spacing: 0.02em;
+  }
+}
+
 /* Category Filter Buttons */
 .filter-btn {
   background-color: rgba(15, 23, 42, 0.85);
