@@ -1,0 +1,239 @@
+/* ==========================================================================
+   PORTFÓLIO ENZO RONCISVALE - ESTILOS VISUAIS DE PONTA (TENDÊNCIA 2026 / ORYZO)
+   ========================================================================== */
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #05070b;
+}
+::-webkit-scrollbar-thumb {
+  background: #1e293b;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #334155;
+}
+
+/* Perspective on Root for 3D Tilt */
+body {
+  perspective: 1200px;
+}
+
+/* Cursor Glow Follower */
+#cursor-glow {
+  transition: opacity 0.4s ease, transform 0.12s ease-out;
+  will-change: transform, left, top;
+}
+
+/* 3D Tilt Bento Cards */
+.tilt-card {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease;
+  will-change: transform;
+}
+
+.tilt-card:hover {
+  box-shadow: 0 25px 50px -15px rgba(0, 0, 0, 0.8), 0 0 35px -8px rgba(99, 102, 241, 0.22);
+}
+
+/* Dynamic Spotlight inside Cards (Mouse Follower) */
+.card-spotlight {
+  background: radial-gradient(
+    650px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(99, 102, 241, 0.14),
+    transparent 45%
+  );
+  transition: opacity 0.3s ease;
+}
+
+.tilt-card:hover .card-spotlight {
+  opacity: 1;
+}
+
+/* Border Beam Shimmering Animation (Tendência UI 2026) */
+.border-beam-card {
+  position: relative;
+  overflow: hidden;
+}
+
+.border-beam-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: conic-gradient(
+    transparent,
+    transparent,
+    transparent,
+    rgba(6, 182, 212, 0.4),
+    rgba(99, 102, 241, 0.6),
+    transparent 40%
+  );
+  animation: rotateBeam 6s linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.border-beam-card > .beam-inner {
+  position: relative;
+  background: #090d16;
+  border-radius: inherit;
+  z-index: 2;
+  margin: 1.5px;
+}
+
+@keyframes rotateBeam {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Category Filter Buttons */
+.filter-btn {
+  background-color: rgba(15, 23, 42, 0.85);
+  color: #94a3b8;
+  border: 1px solid rgba(51, 65, 85, 0.8);
+  backdrop-filter: blur(12px);
+  cursor: pointer !important;
+  user-select: none;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.filter-btn:hover {
+  color: #ffffff;
+  background-color: rgba(30, 41, 59, 1);
+  border-color: #64748b;
+  transform: translateY(-2px);
+}
+.filter-btn.active {
+  background: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%) !important;
+  color: #ffffff !important;
+  border-color: transparent !important;
+  box-shadow: 0 6px 20px rgba(79, 70, 229, 0.45) !important;
+  transform: translateY(-2px);
+}
+
+/* Project Card Transitions & Elevation */
+.project-card {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, opacity 0.2s ease;
+  transform-style: preserve-3d;
+}
+
+/* Interactive Action Buttons Elevation inside 3D Tilt Cards */
+.card-action-btn,
+.project-card a,
+.project-card button {
+  position: relative !important;
+  z-index: 40 !important;
+  transform: translateZ(35px) !important;
+  pointer-events: auto !important;
+  cursor: pointer !important;
+}
+
+.project-card a:hover,
+.project-card button:hover {
+  transform: translateZ(45px) scale(1.03) !important;
+}
+
+/* Floating Raycast-Style Quick Action Dock */
+.floating-dock {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(10, 15, 26, 0.85);
+  border: 1px solid rgba(51, 65, 85, 0.6);
+  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.7), 0 0 25px -5px rgba(99, 102, 241, 0.2);
+}
+
+/* Toast Animation */
+#toast.show {
+  transform: translate(-50%, 0);
+  opacity: 1;
+}
+
+/* Interactive SQL Terminal Styling */
+.sql-tab.active {
+  background: rgba(99, 102, 241, 0.2);
+  color: #818cf8;
+  border-color: rgba(99, 102, 241, 0.5);
+}
+
+/* Command Palette & CV Modal Transitions */
+#cvModal, #cmdPaletteModal {
+  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cmd-item {
+  transition: all 0.15s ease;
+}
+
+.cmd-item:hover {
+  background: rgba(99, 102, 241, 0.15);
+  border-left: 3px solid #6366f1;
+  padding-left: calc(0.75rem + 3px);
+}
+
+/* ==========================================================================
+   PRINT RESUME FORMATTING (@media print)
+   ========================================================================== */
+@media print {
+  /* Ocultar elementos interativos */
+  header, footer, aside, #inicio, #curriculo, #sobre, #projetos, #formacao, #experiencia, #habilidades, #contato, #toast, #sql-playground, .floating-dock, #neural-canvas, #cursor-glow, .fixed {
+    display: none !important;
+  }
+
+  /* Exibir apenas a versão de impressão */
+  #printResume {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    color: #1e293b !important;
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    font-family: 'Inter', -apple-system, sans-serif !important;
+    font-size: 11pt !important;
+    line-height: 1.45 !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #0f172a !important;
+    padding: 8mm !important;
+    margin: 0 !important;
+  }
+
+  .print-container {
+    max-width: 100% !important;
+  }
+
+  .print-header h1 {
+    font-size: 24pt !important;
+    font-weight: 800 !important;
+    color: #0f172a !important;
+  }
+
+  .print-header h2 {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+  }
+
+  .print-section h3 {
+    font-size: 11pt !important;
+    font-weight: 700 !important;
+    color: #1e293b !important;
+    border-bottom: 1pt solid #cbd5e1 !important;
+    padding-bottom: 2pt !important;
+    margin-bottom: 4pt !important;
+    text-transform: uppercase !important;
+  }
+
+  .print-section p, .print-section li {
+    font-size: 9.5pt !important;
+    color: #334155 !important;
+  }
+}

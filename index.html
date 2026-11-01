@@ -1,0 +1,1796 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Enzo Roncisvale | Banco de Dados, Dados &amp; Sistemas • CEUB</title>
+  <meta name="description" content="Portfólio de Enzo Roncisvale - Interesse em Banco de Dados / Dados e Sistemas. Tecnólogo em ADS e Pós-Graduando em Ciência de Dados pelo CEUB. Ex-CASSI. 3 Aplicações Live na Vercel.">
+  <meta name="author" content="Enzo Roncisvale">
+
+  <!-- Open Graph / Meta Social -->
+  <meta property="og:title" content="Enzo Roncisvale | Banco de Dados, Dados &amp; Sistemas">
+  <meta property="og:description" content="Explore os projetos em produção na Vercel (MIA CRM, Marca Aí, AlertaEncosta), simulador de queries SQL e formação pelo CEUB.">
+  <meta property="og:type" content="website">
+
+  <!-- Favicon -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⚡</text></svg>">
+
+  <!-- Google Fonts: Plus Jakarta Sans, Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            display: ['Plus Jakarta Sans', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              200: '#c7d2fe',
+              300: '#a5b4fc',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+              800: '#3730a3',
+              900: '#312e81',
+              950: '#1e1b4b',
+            },
+            cyanAccent: {
+              300: '#67e8f9',
+              400: '#22d3ee',
+              500: '#06b6d4',
+              600: '#0891b2',
+            },
+            emeraldAccent: {
+              400: '#34d399',
+              500: '#10b981',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#05070b] text-slate-100 font-sans selection:bg-brand-500 selection:text-white antialiased overflow-x-hidden">
+
+  <!-- Ambient Cursor Spotlight Follower (Estilo Oryzo.ai) -->
+  <div id="cursor-glow" class="pointer-events-none fixed -translate-x-1/2 -translate-y-1/2 rounded-full w-[650px] h-[650px] bg-[radial-gradient(circle,rgba(99,102,241,0.12)_0%,rgba(6,182,212,0.06)_40%,transparent_70%)] blur-2xl z-0 transition-opacity duration-500"></div>
+
+  <!-- Interactive Neural / Particle Canvas (Estilo Oryzo.ai) -->
+  <canvas id="neural-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+  <!-- Ambient Static Glow Layers -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none -z-10">
+    <div class="absolute -top-40 -left-40 w-[550px] h-[550px] bg-brand-600/12 rounded-full blur-[140px]"></div>
+    <div class="absolute top-1/3 -right-40 w-[550px] h-[550px] bg-cyanAccent-500/10 rounded-full blur-[150px]"></div>
+    <div class="absolute bottom-10 left-1/3 w-[600px] h-[600px] bg-brand-500/08 rounded-full blur-[160px]"></div>
+    <div class="absolute inset-0 bg-[radial-gradient(#1e293b_1px,transparent_1px)] [background-size:36px_36px] opacity-35"></div>
+  </div>
+
+  <!-- Top Sticky Navigation Bar -->
+  <header class="sticky top-0 z-50 backdrop-blur-2xl bg-[#05070b]/80 border-b border-slate-800/80 transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between relative z-10">
+      
+      <!-- Brand Logo -->
+      <a href="#inicio" class="flex items-center gap-3.5 group">
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-600 via-brand-500 to-cyanAccent-400 p-[1.5px] shadow-lg shadow-brand-500/25 group-hover:scale-105 transition-transform">
+          <div class="w-full h-full bg-[#05070b] rounded-[14px] flex items-center justify-center font-display font-extrabold text-white text-base">
+            ER
+          </div>
+        </div>
+        <div>
+          <span class="font-display font-bold text-base text-white group-hover:text-brand-300 transition-colors">Enzo Roncisvale</span>
+          <span class="block text-[11px] text-cyanAccent-400 font-semibold tracking-wide uppercase">Banco de Dados • Dados &amp; Sistemas</span>
+        </div>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <nav class="hidden lg:flex items-center gap-6">
+        <a href="#inicio" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Início</a>
+        <a href="#projetos" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Projetos Vercel</a>
+        <a href="#sql-playground" class="text-xs uppercase tracking-wider font-semibold text-cyanAccent-400 hover:text-cyanAccent-300 flex items-center gap-1.5 transition-colors">
+          <i class="fa-solid fa-terminal text-[10px]"></i>
+          <span>SQL Lab</span>
+        </a>
+        <a href="#experiencia" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">CASSI</a>
+        <a href="#formacao" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">CEUB</a>
+        <a href="#habilidades" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Habilidades</a>
+        <a href="#contato" class="text-xs uppercase tracking-wider font-semibold text-slate-300 hover:text-brand-400 transition-colors">Contato</a>
+      </nav>
+
+      <!-- Action Buttons & Live Clock (CANTO SUPERIOR DIREITO) -->
+      <div class="hidden sm:flex items-center gap-2.5">
+        
+        <!-- Live Clock Badge -->
+        <div class="hidden 2xl:flex items-center gap-2 px-3 py-1.5 rounded-xl bg-slate-900/90 border border-slate-800 text-[11px] font-mono text-slate-400">
+          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+          <span id="brasilia-clock">Brasília-DF</span>
+        </div>
+
+        <!-- Quick Command Palette Trigger (Ctrl + K) -->
+        <button onclick="openCommandPalette()" class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-slate-900/90 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 text-xs font-mono text-slate-400 hover:text-white transition shadow-sm" title="Abrir busca rápida interativa (Ctrl + K)">
+          <i class="fa-solid fa-terminal text-[10px] text-cyanAccent-400"></i>
+          <span>Buscar</span>
+          <kbd class="px-1.5 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] text-slate-300">Ctrl K</kbd>
+        </button>
+
+        <!-- Audio Sound Effects Toggle -->
+        <button onclick="toggleAudio()" id="audioBtn" class="p-2 rounded-xl bg-slate-900/90 border border-slate-800 text-slate-400 hover:text-white hover:bg-slate-800 transition" title="Alternar efeitos sonoros táteis">
+          <i class="fa-solid fa-volume-high text-xs" id="audioIcon"></i>
+        </button>
+
+        <!-- CURRÍCULO NO CANTO SUPERIOR DIREITO COM DROPDOWN & MODAL -->
+        <div class="relative group" id="cvHeaderDropdown">
+          <button onclick="openCvModal()" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-600 via-rose-500 to-amber-500 hover:from-rose-500 hover:to-amber-400 text-white text-xs font-bold flex items-center gap-2 shadow-lg shadow-rose-500/25 hover:scale-105 active:scale-95 transition-all" title="Ver ou Baixar Currículo Oficial de Enzo">
+            <i class="fa-solid fa-file-pdf text-sm"></i>
+            <span>Currículo</span>
+            <i class="fa-solid fa-chevron-down text-[10px] opacity-75 group-hover:rotate-180 transition-transform"></i>
+          </button>
+
+          <!-- Dropdown Menu -->
+          <div class="absolute right-0 top-full mt-2 w-64 p-2 rounded-2xl bg-[#090d16]/95 border border-slate-700/80 shadow-2xl backdrop-blur-2xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+            <div class="px-3 py-2 border-b border-slate-800/80 mb-1">
+              <span class="text-[10px] font-bold uppercase tracking-wider text-rose-400">Currículo Oficial de Enzo</span>
+              <span class="block text-[11px] text-slate-400 font-mono">PDF Atualizado (68 KB)</span>
+            </div>
+            <button onclick="openCvModal()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/90 text-xs font-semibold text-white flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-eye text-cyanAccent-400"></i>
+              <span>Visualizar Currículo</span>
+            </button>
+            <a href="Curriculo_Enzo_Roncisvale.pdf" download="Curriculo_Enzo_Roncisvale.pdf" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/90 text-xs font-semibold text-white flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-file-arrow-down text-emerald-400"></i>
+              <span>Baixar Arquivo PDF (68 KB)</span>
+            </a>
+            <a href="Curriculo_Enzo_Roncisvale.pdf" target="_blank" rel="noopener noreferrer" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/90 text-xs font-semibold text-white flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-arrow-up-right-from-square text-amber-400"></i>
+              <span>Abrir PDF em Nova Aba</span>
+            </a>
+            <button onclick="window.print()" class="w-full text-left px-3 py-2 rounded-xl hover:bg-slate-800/90 text-xs font-semibold text-white flex items-center gap-2.5 transition">
+              <i class="fa-solid fa-print text-slate-400"></i>
+              <span>Imprimir A4 (Ctrl+P)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- WhatsApp Quick Button -->
+        <a href="https://wa.me/5561982217080?text=Ol%C3%A1%20Enzo,%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white text-xs font-bold flex items-center gap-2 shadow-md shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>WhatsApp</span>
+        </a>
+      </div>
+
+      <!-- Mobile Menu Toggle Button -->
+      <button id="mobileMenuBtn" aria-label="Abrir Menu" class="lg:hidden p-2.5 rounded-xl border border-slate-800 bg-slate-900 text-slate-300 hover:text-white">
+        <i class="fa-solid fa-bars text-lg" id="menuIcon"></i>
+      </button>
+
+    </div>
+
+    <!-- Mobile Dropdown Menu -->
+    <div id="mobileMenu" class="hidden lg:hidden border-b border-slate-800 bg-[#05070b]/95 px-5 pt-3 pb-6 space-y-3.5 backdrop-blur-2xl">
+      <a href="#inicio" class="mobile-nav-link block py-2 text-slate-300 hover:text-brand-400 font-medium">Início</a>
+      <button onclick="openCvModal()" class="mobile-nav-link w-full text-left py-2 text-rose-400 hover:text-rose-300 font-bold flex items-center gap-2">
+        <i class="fa-solid fa-file-pdf text-xs"></i>
+        <span>Currículo Oficial (Visualizar / Baixar)</span>
+      </button>
+      <a href="#projetos" class="mobile-nav-link block py-2 text-slate-300 hover:text-brand-400 font-medium">Projetos Vercel</a>
+      <a href="#sql-playground" class="mobile-nav-link block py-2 text-cyanAccent-400 hover:text-cyanAccent-300 font-medium">Simulador SQL Interativo</a>
+      <a href="#experiencia" class="mobile-nav-link block py-2 text-slate-300 hover:text-brand-400 font-medium">Experiência CASSI</a>
+      <a href="#formacao" class="mobile-nav-link block py-2 text-slate-300 hover:text-brand-400 font-medium">Formação CEUB</a>
+      <a href="#contato" class="mobile-nav-link block py-2 text-slate-300 hover:text-brand-400 font-medium">Contato</a>
+      
+      <div class="pt-4 flex flex-col gap-2.5 border-t border-slate-800">
+        <a href="Curriculo_Enzo_Roncisvale.pdf" download="Curriculo_Enzo_Roncisvale.pdf" class="w-full py-2.5 rounded-xl border border-rose-500/40 bg-rose-500/10 text-rose-300 text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-arrow-down text-rose-400"></i>
+          <span>Baixar Currículo PDF Oficial</span>
+        </a>
+        <a href="https://wa.me/5561982217080?text=Ol%C3%A1%20Enzo,%20vi%20seu%20portf%C3%B3lio%20e%20gostaria%20de%20conversar!" target="_blank" rel="noopener noreferrer" class="w-full py-2.5 rounded-xl bg-emerald-600 text-white text-xs font-bold flex items-center justify-center gap-2">
+          <i class="fa-brands fa-whatsapp text-sm"></i>
+          <span>Falar no WhatsApp</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-10">
+    <!-- HERO SECTION -->
+    <section id="inicio" class="relative pt-12 pb-20 md:pt-24 md:pb-28 overflow-hidden">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          
+          <!-- Hero Left Content -->
+          <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+            
+            <!-- Live Status Beacon & Vercel Pill -->
+            <div class="inline-flex flex-wrap items-center gap-2.5 px-4 py-1.5 rounded-full bg-slate-900/90 border border-slate-800 text-xs font-semibold text-slate-200 backdrop-blur-md shadow-sm">
+              <span class="relative flex h-2.5 w-2.5">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span class="text-cyanAccent-400">3 Aplicações Live na Vercel ⚡</span>
+              <span class="text-slate-500">•</span>
+              <span>Brasília - DF</span>
+            </div>
+
+            <!-- Dynamic Text Scramble Title -->
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white leading-[1.12]">
+              Enzo Roncisvale <br class="hidden sm:inline">
+              <span class="bg-gradient-to-r from-brand-400 via-cyanAccent-400 to-emeraldAccent-400 bg-clip-text text-transparent" id="scramble-heading">
+                Dados &amp; Sistemas
+              </span>
+            </h1>
+
+            <!-- Interactive Subtitle with Animated Decoder -->
+            <div class="flex items-center justify-center lg:justify-start gap-2 font-mono text-xs sm:text-sm text-cyanAccent-300">
+              <i class="fa-solid fa-terminal text-brand-400"></i>
+              <span class="text-slate-400">foco:</span>
+              <span id="scramble-role" class="font-semibold text-white border-r-2 border-brand-500 pr-1 animate-pulse">SQL e Modelagem de Dados</span>
+            </div>
+
+            <!-- Exact Objective from Uploaded Resume -->
+            <div class="p-5 rounded-2xl bg-gradient-to-r from-slate-900/95 via-slate-850 to-slate-900/90 border border-slate-800/90 shadow-xl text-left max-w-2xl mx-auto lg:mx-0">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-[10px] font-bold uppercase tracking-wider text-brand-400 bg-brand-500/10 px-2.5 py-0.5 rounded border border-brand-500/20">
+                  Objetivo Profissional
+                </span>
+                <span class="text-[11px] text-slate-400 font-mono">Currículo Atualizado</span>
+              </div>
+              <p class="text-slate-200 text-sm sm:text-base leading-relaxed">
+                “Tenho buscado evoluir constantemente, realizando cursos de TI e aprimorando meus conhecimentos. Estou em busca de uma oportunidade para ingressar na área.”
+              </p>
+            </div>
+
+            <!-- The Big 3 Vercel Apps Quick Bar -->
+            <div class="pt-1">
+              <span class="block text-[11px] font-bold uppercase tracking-wider text-slate-400 mb-2">Aplicações com Deploy Ativo em Produção:</span>
+              <div class="flex flex-wrap justify-center lg:justify-start gap-2 text-xs">
+                <a href="https://mia-crm-prototipo.vercel.app" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-300 font-semibold flex items-center gap-1.5 transition">
+                  <span class="w-1.5 h-1.5 rounded-full bg-amber-400 animate-pulse"></span>
+                  <span>MIA CRM</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+                <a href="https://marca-ai-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 border border-rose-500/30 text-rose-300 font-semibold flex items-center gap-1.5 transition">
+                  <span class="w-1.5 h-1.5 rounded-full bg-rose-400 animate-pulse"></span>
+                  <span>Marca Aí!</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+                <a href="https://alerta-encosta.vercel.app/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-cyanAccent-500/10 hover:bg-cyanAccent-500/20 border border-cyanAccent-500/30 text-cyanAccent-300 font-semibold flex items-center gap-1.5 transition">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyanAccent-400 animate-pulse"></span>
+                  <span>AlertaEncosta</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[9px]"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Hero Action Buttons -->
+            <div class="flex flex-wrap justify-center lg:justify-start items-center gap-3.5 pt-2">
+              <a href="#projetos" class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-600 to-cyanAccent-600 hover:from-brand-500 hover:to-cyanAccent-500 text-white font-bold text-sm flex items-center gap-2.5 shadow-lg shadow-brand-500/25 hover:scale-105 active:scale-95 transition-all">
+                <span>Ver Deploys Vercel &amp; Projetos</span>
+                <i class="fa-solid fa-arrow-down text-xs"></i>
+              </a>
+
+              <a href="#sql-playground" class="px-5 py-3.5 rounded-xl bg-slate-900 hover:bg-slate-800 border border-cyanAccent-500/40 text-cyanAccent-300 hover:text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-cyanAccent-500/10 hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-solid fa-terminal text-xs"></i>
+                <span>Testar Simulador SQL</span>
+              </a>
+
+              <a href="https://wa.me/5561982217080?text=Ol%C3%A1%20Enzo,%20vi%20seu%20curr%C3%ADculo%20e%20gostaria%20de%20conversar!" target="_blank" rel="noopener noreferrer" class="px-4 py-3.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center gap-2 shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95 transition-all">
+                <i class="fa-brands fa-whatsapp text-base"></i>
+                <span>(61) 98221-7080</span>
+              </a>
+            </div>
+
+          </div>
+
+          <!-- Hero Right: Interactive 3D Tilt Card (Estilo Oryzo) -->
+          <div class="lg:col-span-5 flex justify-center">
+            <div class="tilt-card w-full max-w-md bg-gradient-to-b from-slate-900/95 to-[#05070b]/95 border border-slate-800/90 rounded-3xl p-6 sm:p-8 shadow-2xl backdrop-blur-xl relative" data-tilt>
+              
+              <!-- Spotlight overlay glow inside card -->
+              <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+
+              <!-- Top accent bar -->
+              <div class="absolute top-0 left-8 right-8 h-1 bg-gradient-to-r from-brand-500 via-cyanAccent-400 to-emeraldAccent-400 rounded-full"></div>
+
+              <!-- Avatar & Header info -->
+              <div class="flex flex-col items-center text-center pb-6 border-b border-slate-800 relative z-10">
+                <div class="relative mb-4">
+                  <div class="w-24 h-24 sm:w-28 sm:h-28 rounded-2xl bg-gradient-to-tr from-brand-600 via-cyanAccent-500 to-emeraldAccent-400 p-[2px] shadow-xl shadow-brand-500/20">
+                    <div class="w-full h-full bg-[#05070b] rounded-[14px] flex items-center justify-center text-white">
+                      <span class="text-3xl sm:text-4xl font-display font-extrabold tracking-wider bg-gradient-to-br from-white via-slate-100 to-slate-400 bg-clip-text text-transparent">ER</span>
+                    </div>
+                  </div>
+                  <div class="absolute -bottom-1 -right-1 w-7 h-7 bg-emerald-500 border-4 border-[#05070b] rounded-full flex items-center justify-center text-[10px] text-white shadow" title="Disponível para contratação">
+                    <i class="fa-solid fa-check"></i>
+                  </div>
+                </div>
+
+                <h2 class="text-2xl font-extrabold font-display text-white">Enzo Roncisvale</h2>
+                <p class="text-xs font-bold text-cyanAccent-400 mt-1 uppercase tracking-wider">Interesse em Banco de Dados / Dados e Sistemas</p>
+                
+                <div class="flex flex-wrap items-center justify-center gap-3 mt-2.5 text-xs text-slate-300">
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-phone text-emerald-400"></i> (61) 98221-7080</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1.5"><i class="fa-solid fa-location-dot text-rose-400"></i> Brasília-DF</span>
+                </div>
+              </div>
+
+              <!-- Quick Highlights list from CV -->
+              <div class="py-5 space-y-3 text-xs text-slate-300 relative z-10">
+                
+                <!-- CASSI Experience -->
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs">
+                      <i class="fa-solid fa-building"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-white">CASSI (10 Meses)</div>
+                      <div class="text-[11px] text-slate-400">Consulta SQL &amp; Processos Administrativos</div>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded border border-emerald-500/20">SQL</span>
+                </div>
+
+                <!-- Graduação ADS CEUB -->
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs">
+                      <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-white">Tecnólogo em ADS • CEUB</div>
+                      <div class="text-[11px] text-slate-400">07/2022 a 11/2025 (Concluído)</div>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold text-brand-400 bg-brand-500/10 px-2 py-0.5 rounded border border-brand-500/20">CEUB</span>
+                </div>
+
+                <!-- Pós-Graduação Ciência de Dados CEUB -->
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-cyanAccent-500/20 text-cyanAccent-400 flex items-center justify-center text-xs">
+                      <i class="fa-solid fa-brain"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-white">Pós em Ciência de Dados • CEUB</div>
+                      <div class="text-[11px] text-slate-400">07/2026 a 07/2027 (Em Andamento)</div>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold text-cyanAccent-400 bg-cyanAccent-500/10 px-2 py-0.5 rounded border border-cyanAccent-500/20">Pós</span>
+                </div>
+
+                <!-- Inglês Manchester -->
+                <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-7 h-7 rounded-lg bg-sky-500/20 text-sky-400 flex items-center justify-center text-xs">
+                      <i class="fa-solid fa-earth-americas"></i>
+                    </div>
+                    <div>
+                      <div class="font-semibold text-white">EC Manchester (UK) — Avançado</div>
+                      <div class="text-[11px] text-slate-400">General English Course (03/2019 a 07/2019)</div>
+                    </div>
+                  </div>
+                  <span class="text-[10px] font-bold text-sky-300 bg-sky-500/10 px-2 py-0.5 rounded border border-sky-500/20">Fluência</span>
+                </div>
+
+              </div>
+
+              <!-- Quick Connect CTA Buttons -->
+              <div class="pt-2 grid grid-cols-2 gap-2.5 relative z-10">
+                <button onclick="copyEmail()" class="py-2.5 px-3 rounded-xl bg-slate-800/90 hover:bg-slate-800 text-slate-200 hover:text-white font-medium text-xs flex items-center justify-center gap-2 border border-slate-700 transition" title="Copiar e-mail de Enzo">
+                  <i class="fa-regular fa-copy"></i>
+                  <span>Copiar E-mail</span>
+                </button>
+                <a href="#contato" class="py-2.5 px-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-medium text-xs flex items-center justify-center gap-2 shadow-md shadow-brand-500/20 transition">
+                  <i class="fa-regular fa-paper-plane"></i>
+                  <span>Falar Comigo</span>
+                </a>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- KEY METRICS BANNER WITH ANIMATED COUNTERS -->
+    <section class="py-10 border-y border-slate-800/80 bg-slate-900/30 backdrop-blur-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
+          
+          <div class="tilt-card p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-brand-500/40 transition" data-tilt>
+            <div class="text-3xl sm:text-4xl font-extrabold font-display text-white">
+              <span class="counter" data-target="100">0</span>%
+            </div>
+            <div class="text-xs text-brand-400 font-bold mt-1">ADS Concluído no CEUB</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">07/2022 a 11/2025</div>
+          </div>
+
+          <div class="tilt-card p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-cyanAccent-500/40 transition" data-tilt>
+            <div class="text-3xl sm:text-4xl font-extrabold font-display text-cyanAccent-400">Pós CEUB</div>
+            <div class="text-xs text-cyanAccent-300 font-bold mt-1">Ciência de Dados</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">07/2026 a 07/2027</div>
+          </div>
+
+          <div class="tilt-card p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-emerald-500/40 transition" data-tilt>
+            <div class="text-3xl sm:text-4xl font-extrabold font-display text-emerald-400">
+              <span class="counter" data-target="10">0</span> Meses
+            </div>
+            <div class="text-xs text-emerald-300 font-bold mt-1">Vivência na CASSI</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">Consulta SQL &amp; Processos</div>
+          </div>
+
+          <div class="tilt-card p-5 rounded-2xl bg-slate-900/60 border border-slate-800 hover:border-sky-500/40 transition" data-tilt>
+            <div class="text-3xl sm:text-4xl font-extrabold font-display text-sky-400">
+              <span class="counter" data-target="23">0</span>+
+            </div>
+            <div class="text-xs text-sky-300 font-bold mt-1">Repositórios no GitHub</div>
+            <div class="text-[11px] text-slate-400 mt-0.5">Inglês Avançado (Manchester UK)</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div id="sobre" class="relative"></div>
+
+    <!-- PROJECTS GALLERY SECTION (PROJETOS & REPOSITÓRIOS GITHUB COM DEPLOYS VERCEL) -->
+    <section id="projetos" class="py-24 bg-slate-900/20 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-12">
+          <span class="text-xs font-bold uppercase tracking-wider text-cyanAccent-400 bg-cyanAccent-500/10 px-3 py-1 rounded-full border border-cyanAccent-500/20">Aplicações em Nuvem</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">Projetos &amp; Deploys na Vercel</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Sistemas completos desenvolvidos com código aberto e deploys ativos na nuvem. Clique nos botões para testar as aplicações funcionais ou inspecionar o código-fonte.
+          </p>
+
+          <!-- Interactive Live Vercel Status Bar / Latency Ticker -->
+          <div class="mt-6 mb-8 p-3 rounded-2xl bg-slate-900/80 border border-slate-800/80 flex flex-wrap items-center justify-between gap-4 text-xs font-mono max-w-4xl mx-auto">
+            <div class="flex items-center gap-2.5">
+              <span class="flex h-2.5 w-2.5 relative">
+                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              <span class="text-white font-bold">Vercel Edge Network:</span>
+              <span class="text-emerald-400">3 Deploys Ativos</span>
+            </div>
+            <div class="flex items-center gap-4 text-slate-400 flex-wrap">
+              <span>MIA: <strong class="text-emerald-400" id="ping-mia">22ms</strong></span>
+              <span>Marca Aí: <strong class="text-emerald-400" id="ping-marca">18ms</strong></span>
+              <span>AlertaEncosta: <strong class="text-emerald-400" id="ping-alerta">26ms</strong></span>
+              <button onclick="pingVercelApps()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-cyanAccent-400 hover:text-white transition flex items-center gap-1.5" title="Testar ping em tempo real">
+                <i class="fa-solid fa-arrows-rotate text-[10px]" id="pingIcon"></i>
+                <span>Testar Ping</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Interactive Category Filters -->
+          <div class="flex flex-wrap items-center justify-center gap-2.5 mt-4 max-w-4xl mx-auto" id="projectFilters">
+            <button class="filter-btn active px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2" data-filter="all">
+              <i class="fa-solid fa-layer-group text-xs"></i>
+              <span>Todos os Projetos</span>
+            </button>
+            <button class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2" data-filter="saas">
+              <i class="fa-solid fa-cubes text-xs"></i>
+              <span>Full Stack &amp; SaaS</span>
+            </button>
+            <button class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2" data-filter="mobile">
+              <i class="fa-solid fa-mobile-screen-button text-xs"></i>
+              <span>Mobile &amp; PWA</span>
+            </button>
+            <button class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2" data-filter="data">
+              <i class="fa-solid fa-chart-pie text-xs"></i>
+              <span>Ciência de Dados &amp; ETL</span>
+            </button>
+            <button class="filter-btn px-4 py-2.5 rounded-xl text-xs font-semibold transition-all flex items-center gap-2" data-filter="web">
+              <i class="fa-solid fa-store text-xs"></i>
+              <span>Web &amp; Negócios</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8" id="projectsContainer">
+          
+          <!-- PROJETO 1: MIA CRM (Deploy Vercel) -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border-2 border-amber-500/40 hover:border-amber-400 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="saas" data-tilt data-card-url="https://mia-crm-prototipo.vercel.app">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-amber-500/15 text-amber-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href="https://mia-crm-prototipo.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3 py-1 rounded-full bg-amber-500/15 hover:bg-amber-500/25 text-amber-300 hover:text-amber-200 border border-amber-500/30 hover:border-amber-400 text-[11px] font-bold flex items-center gap-1.5 transition-all" title="Acessar deploy em produção na Vercel">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    <span>Deploy Ativo na Vercel ⚡</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-solid fa-globe text-amber-400/80"></i>
+                <span>mia-crm-prototipo.vercel.app</span>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-amber-300 transition-colors">
+                <a href="https://mia-crm-prototipo.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>MIA CRM Inteligente</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-amber-400"></i>
+                </a>
+              </h3>
+
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Plataforma SaaS B2B Multi-tenant para microempresas e autônomos com Secretária Inteligente (MIA) baseada em IA, 12 módulos integrados (Dashboard, Clientes, Funil de Leads, Agenda, Financeiro) e adaptação para até 15 nichos.
+              </p>
+
+              <!-- Key features -->
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-amber-400"></i>
+                  <span>Construído com <strong>Next.js 16 (App Router)</strong>, React 19 e TypeScript.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-amber-400"></i>
+                  <span>Painéis analíticos em tempo real com gráficos Recharts e Tailwind CSS v4.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-amber-400"></i>
+                  <span>Hospedado em nuvem com deploy contínuo na Vercel.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">Next.js 16</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">React 19</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-amber-300 border border-slate-700">TypeScript</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://mia-crm-prototipo.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-amber-500 hover:bg-amber-400 active:scale-95 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-amber-500/25 transition-all">
+                  <i class="fa-solid fa-bolt text-xs"></i>
+                  <span>Acessar no Vercel</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+                <a href="https://github.com/EnzoRoncisvale/mia-crm" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 hover:border-slate-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver no GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 2: MARCA AÍ (Deploy Vercel) -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border-2 border-rose-500/40 hover:border-rose-400 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="mobile" data-tilt data-card-url="https://marca-ai-kappa.vercel.app">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-rose-500/15 text-rose-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-futbol"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href="https://marca-ai-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3 py-1 rounded-full bg-rose-500/15 hover:bg-rose-500/25 text-rose-300 hover:text-rose-200 border border-rose-500/30 hover:border-rose-400 text-[11px] font-bold flex items-center gap-1.5 transition-all" title="Acessar deploy em produção na Vercel">
+                    <span class="w-2 h-2 rounded-full bg-rose-400 animate-pulse"></span>
+                    <span>Deploy Ativo na Vercel ⚡</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-solid fa-globe text-rose-400/80"></i>
+                <span>marca-ai-kappa.vercel.app</span>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-rose-300 transition-colors">
+                <a href="https://marca-ai-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>Marca Aí! — Partidas em Quadras Públicas</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-rose-400"></i>
+                </a>
+              </h3>
+
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Projeto destacado no currículo oficial: desenvolvimento de aplicação para criação e visualização de partidas esportivas em mapa georreferenciado, marcação de local, horário e modalidade esportiva com persistência em banco de dados.
+              </p>
+
+              <!-- Key features -->
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-rose-400"></i>
+                  <span>Mapa interativo (Leaflet) calibrado com quadras públicas de Brasília (Asa Norte, Asa Sul, Parque da Cidade).</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-rose-400"></i>
+                  <span>Aplicativo nativo Android compilado via <strong>Capacitor</strong> e PWA instalável.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-rose-400"></i>
+                  <span>Deploy contínuo na Vercel e automação de build pelo GitHub Actions.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300 border border-slate-700">Capacitor</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300 border border-slate-700">Leaflet Maps</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-rose-300 border border-slate-700">PWA</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://marca-ai-kappa.vercel.app" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-rose-600 hover:bg-rose-500 active:scale-95 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-rose-500/25 transition-all">
+                  <i class="fa-solid fa-bolt text-xs"></i>
+                  <span>Acessar no Vercel</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+                <a href="https://github.com/EnzoRoncisvale/marca-ai" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 hover:border-slate-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver no GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 3: ALERTA ENCOSTA (Deploy Vercel) -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border-2 border-cyanAccent-500/40 hover:border-cyanAccent-400 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="data" data-tilt data-card-url="https://alerta-encosta.vercel.app/">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-cyanAccent-500/15 text-cyanAccent-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-triangle-exclamation"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <a href="https://alerta-encosta.vercel.app/" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3 py-1 rounded-full bg-cyanAccent-500/15 hover:bg-cyanAccent-500/25 text-cyanAccent-300 hover:text-cyanAccent-200 border border-cyanAccent-500/30 hover:border-cyanAccent-400 text-[11px] font-bold flex items-center gap-1.5 transition-all" title="Acessar deploy em produção na Vercel">
+                    <span class="w-2 h-2 rounded-full bg-cyanAccent-400 animate-pulse"></span>
+                    <span>Deploy Ativo na Vercel ⚡</span>
+                  </a>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-solid fa-globe text-cyanAccent-400/80"></i>
+                <span>alerta-encosta.vercel.app</span>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-cyanAccent-300 transition-colors">
+                <a href="https://alerta-encosta.vercel.app/" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>AlertaEncosta — Monitoramento &amp; Defesa Civil</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-cyanAccent-400"></i>
+                </a>
+              </h3>
+
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Sistema operacional de comando para Defesa Civil com telemetria de 3 setores de encostas e risco de deslizamento, alinhado à Meta 2.2.2 do PN-PDC (Decreto Federal nº 12.652/2025). Inclui decisão humana obrigatória (Human-in-the-Loop) e exportação CAP/JSON.
+              </p>
+
+              <!-- Key features -->
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-cyanAccent-400"></i>
+                  <span>Triagem operacional em tempo real de sensores e detecção de dados desatualizados.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-cyanAccent-400"></i>
+                  <span>Histórico auditável, persistência local e ensaio cronometrado de redução de tempo.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-cyanAccent-400"></i>
+                  <span>Deploy ativo e otimizado na nuvem Vercel.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-cyanAccent-300 border border-slate-700">IoT Mock</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-cyanAccent-300 border border-slate-700">Telemetria</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-cyanAccent-300 border border-slate-700">CEUB</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://alerta-encosta.vercel.app/" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-cyanAccent-500 hover:bg-cyanAccent-400 active:scale-95 text-slate-950 font-bold text-xs flex items-center gap-2 shadow-lg shadow-cyanAccent-500/25 transition-all">
+                  <i class="fa-solid fa-bolt text-xs"></i>
+                  <span>Acessar no Vercel</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+                <a href="https://github.com/EnzoRoncisvale/alerta-encosta" target="_blank" rel="noopener noreferrer" class="card-action-btn px-3.5 py-2.5 rounded-xl bg-slate-800 hover:bg-slate-700 active:scale-95 border border-slate-700 hover:border-slate-600 text-white font-semibold text-xs flex items-center gap-1.5 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver no GitHub</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 4: PIPELINE DE ETL & CIÊNCIA DE DADOS (P-s-Gradua-o-em-ciencia-de-dados) -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border-2 border-brand-500/40 hover:border-brand-400 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="data" data-tilt data-card-url="https://github.com/EnzoRoncisvale/P-s-Gradua-o-em-ciencia-de-dados">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-brand-500/15 text-brand-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-chart-pie"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-brand-500/15 text-brand-300 border border-brand-500/30 text-[11px] font-bold">
+                    Pós-Graduação CEUB • Dados Reais
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-brands fa-github text-brand-400/80"></i>
+                <span>EnzoRoncisvale/P-s-Gradua-o-em-ciencia-de-dados</span>
+              </div>
+
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-brand-300 transition-colors">
+                <a href="https://github.com/EnzoRoncisvale/P-s-Gradua-o-em-ciencia-de-dados" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>Pipeline de ETL &amp; Análise da PDAD/DF</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-brand-400"></i>
+                </a>
+              </h3>
+
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Pipeline completo de <strong>ETL (Extração, Tratamento e Carga)</strong> e análise exploratória de microdados reais da <strong>Pesquisa Distrital por Amostra de Domicílios (PDAD 2024 — CODEPLAN/DF)</strong>, mapeando correlações entre escolaridade, faixa etária e Regiões Administrativas do DF.
+              </p>
+
+              <!-- Key features from notebook analysis -->
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Leitura e ingestão de microdados estruturados em Python e Pandas.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Auditoria rigorosa de qualidade: detecção de nulos, duplicatas e recodificação categórica.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Agregações analíticas e geração de estatísticas descritivas para suporte a políticas públicas.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">Python</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">Jupyter</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">Pandas / ETL</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">PDAD 2024</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://github.com/EnzoRoncisvale/P-s-Gradua-o-em-ciencia-de-dados" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 active:scale-95 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-brand-500/25 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver Notebook no GitHub</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 5: SISTEMA DE CHAT SEGURO (PROJETO OFICIAL DO CURRÍCULO) -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border border-slate-800 hover:border-brand-500/60 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="saas" data-tilt data-card-url="https://github.com/EnzoRoncisvale/Projeto_chat">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-brand-500/15 text-brand-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-lock"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-brand-500/10 text-brand-300 border border-brand-500/30 text-[11px] font-semibold">
+                    Projeto Pessoal do Currículo
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-brands fa-github text-brand-400/80"></i>
+                <span>EnzoRoncisvale/Projeto_chat</span>
+              </div>
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-brand-300 transition-colors">
+                <a href="https://github.com/EnzoRoncisvale/Projeto_chat" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>Sistema de Chat Seguro com Banco de Dados</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-brand-400"></i>
+                </a>
+              </h3>
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Sistema que exige cadastro prévio, armazena dados em banco relacional e restringe a comunicação a usuários registrados. Inclui cadastro seguro, autenticação, mensagens privadas e medidas ativas de proteção contra SQL Injection.
+              </p>
+
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Cadastro seguro e hash criptográfico de credenciais no banco de dados.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Controle rigoroso de sessões ativas e isolamento de mensagens privadas.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-brand-400"></i>
+                  <span>Desenvolvido utilizando <strong>HTML, CSS e PHP</strong> integrado com banco relacional.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">PHP</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">MySQL</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-brand-300 border border-slate-700">HTML5/CSS3</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://github.com/EnzoRoncisvale/Projeto_chat" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 active:scale-95 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-brand-500/25 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver Código no GitHub</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- PROJETO 6: TUNICO'S GYM -->
+          <article class="project-card tilt-card bg-gradient-to-br from-slate-900/95 to-[#05070b] border border-slate-800 hover:border-emerald-500/60 rounded-3xl p-7 sm:p-8 shadow-xl transition duration-300 flex flex-col justify-between group relative" data-category="web" data-tilt data-card-url="https://github.com/EnzoRoncisvale/tunicos-gym">
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="flex items-center justify-between gap-4 mb-4">
+                <div class="w-12 h-12 rounded-2xl bg-emerald-500/15 text-emerald-400 flex items-center justify-center text-xl group-hover:scale-110 transition-transform">
+                  <i class="fa-solid fa-dumbbell"></i>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-300 border border-emerald-500/30 text-[11px] font-semibold">
+                    Web &amp; Conversão
+                  </span>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs font-mono text-slate-400 mb-1">
+                <i class="fa-brands fa-github text-emerald-400/80"></i>
+                <span>EnzoRoncisvale/tunicos-gym</span>
+              </div>
+              <h3 class="text-2xl font-bold font-display text-white group-hover:text-emerald-300 transition-colors">
+                <a href="https://github.com/EnzoRoncisvale/tunicos-gym" target="_blank" rel="noopener noreferrer" class="card-action-btn hover:underline flex items-center gap-2">
+                  <span>Tunico's Gym — Plataforma Fitness de Alta Performance</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-sm text-emerald-400"></i>
+                </a>
+              </h3>
+              <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+                Landing page esportiva com estética *performance* monocromática, filtro em tempo real de 31 unidades (DF, GO, BA), gerador dinâmico de voucher de passe livre e integração direta com WhatsApp.
+              </p>
+
+              <div class="mt-5 space-y-2 text-xs text-slate-300">
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Buscador instantâneo com filtragem facetada por estado e cidade.</span>
+                </div>
+                <div class="flex items-center gap-2.5">
+                  <i class="fa-solid fa-check text-emerald-400"></i>
+                  <span>Carregamento ultrarrápido, sem dependências pesadas e com UX responsiva para celular.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 relative z-20">
+              <div class="flex flex-wrap gap-1.5 text-[11px] font-mono">
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300 border border-slate-700">HTML5</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300 border border-slate-700">CSS3 Modern</span>
+                <span class="px-2 py-0.5 rounded bg-slate-800 text-emerald-300 border border-slate-700">JavaScript</span>
+              </div>
+              <div class="flex items-center gap-2.5 flex-wrap">
+                <a href="https://github.com/EnzoRoncisvale/tunicos-gym" target="_blank" rel="noopener noreferrer" class="card-action-btn px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 active:scale-95 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-emerald-500/25 transition-all">
+                  <i class="fa-brands fa-github text-sm"></i>
+                  <span>Ver no GitHub</span>
+                  <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                </a>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+      </div>
+    </section>
+
+<!-- INTERACTIVE SQL & DATA PLAYGROUND (PROVANDO A EXPERIÊNCIA NA PRÁTICA) -->
+    <section id="sql-playground" class="py-24 bg-gradient-to-b from-slate-950 via-slate-900/60 to-slate-950 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-14">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyanAccent-500/10 border border-cyanAccent-500/20 text-xs font-bold text-cyanAccent-400 uppercase tracking-wider mb-2">
+            <i class="fa-solid fa-terminal"></i>
+            <span>Simulador de Consultas SQL &amp; Engenharia de Dados</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Laboratório SQL em Tempo Real</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Interaja com consultas SQL reais estruturadas por Enzo Roncisvale para a CASSI, para o pipeline da PDAD/DF e para a aplicação Marca Aí.
+          </p>
+
+          <!-- Query Selection Tabs -->
+          <div class="flex flex-wrap justify-center gap-2 mt-8">
+            <button onclick="runSqlQuery('cassi')" id="tab-cassi" class="sql-tab active px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+              <i class="fa-solid fa-building mr-1.5"></i> 1. Extração CASSI (Bancos Relacionais)
+            </button>
+            <button onclick="runSqlQuery('pdad')" id="tab-pdad" class="sql-tab px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+              <i class="fa-solid fa-chart-pie mr-1.5"></i> 2. Pipeline ETL PDAD/DF (CODEPLAN)
+            </button>
+            <button onclick="runSqlQuery('marcaai')" id="tab-marcaai" class="sql-tab px-4 py-2 rounded-xl text-xs font-semibold border border-slate-700 transition">
+              <i class="fa-solid fa-futbol mr-1.5"></i> 3. Quadras Públicas (Marca Aí)
+            </button>
+          </div>
+        </div>
+
+        <!-- Terminal Window Mockup -->
+        <div class="max-w-5xl mx-auto bg-[#090d16] border border-slate-800 rounded-3xl overflow-hidden shadow-2xl">
+          <!-- Terminal Header Bar -->
+          <div class="px-5 py-3.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="w-3 h-3 rounded-full bg-rose-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-amber-500/80"></span>
+              <span class="w-3 h-3 rounded-full bg-emerald-500/80"></span>
+              <span class="ml-2 text-xs font-mono text-slate-400" id="sql-title">CASSI — Extração de Relatório e Integridade de Beneficiários</span>
+            </div>
+            <div class="text-[11px] font-mono text-cyanAccent-400 font-semibold" id="sql-exec-time">
+              ⚡ Executado em 12ms • Banco Relacional
+            </div>
+          </div>
+
+          <!-- Code Window -->
+          <div class="p-6 bg-[#060910] border-b border-slate-800/80">
+            <pre class="font-mono text-xs text-brand-300 leading-relaxed overflow-x-auto selection:bg-brand-500 selection:text-white" id="sql-code-text">-- Carregando consulta...</pre>
+          </div>
+
+          <!-- Output Data Table with Interactive Controls -->
+          <div class="p-6 bg-[#090d16] overflow-x-auto">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-4">
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-slate-300">Resultado da Consulta:</span>
+                <span class="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-[10px] font-mono" id="sql-exec-time">Executado em 0.03ms • 5 linhas</span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <input type="text" id="sqlTableSearch" placeholder="🔍 Filtrar registros..." class="px-3 py-1 rounded-xl bg-slate-900 border border-slate-700 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-cyanAccent-400 transition" oninput="filterSqlTable()">
+                <button onclick="exportSqlCsv()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition" title="Exportar resultado para planilha CSV">
+                  <i class="fa-solid fa-file-csv text-emerald-400"></i>
+                  <span>Exportar CSV</span>
+                </button>
+                <button onclick="copySqlJson()" class="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 text-xs font-semibold flex items-center gap-1.5 transition" title="Copiar resultado como JSON">
+                  <i class="fa-regular fa-copy text-cyanAccent-400"></i>
+                  <span>Copiar JSON</span>
+                </button>
+              </div>
+            </div>
+            <table class="w-full text-left border-collapse">
+              <thead id="sql-table-head"></thead>
+              <tbody id="sql-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- PROFESSIONAL EXPERIENCE (EXPERIÊNCIA CORPORATIVA CASSI) -->
+    <section id="experiencia" class="py-24 bg-slate-900/20 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Experiência Profissional</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">Atuação Prática na CASSI</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Conforme registrado no currículo oficial: 10 meses de atuação direta em banco de dados e fluxos administrativos corporativos.
+          </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+          
+          <!-- Experience Card: CASSI -->
+          <div class="relative pl-8 sm:pl-12 border-l-2 border-brand-500/50 pb-4">
+            <div class="absolute -left-4 sm:-left-5 top-0 w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-brand-600 border-4 border-[#05070b] flex items-center justify-center text-white text-xs sm:text-sm shadow-md">
+              <i class="fa-solid fa-building"></i>
+            </div>
+
+            <div class="tilt-card bg-gradient-to-br from-slate-900/90 to-[#05070b] border border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xl relative" data-tilt>
+              <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+              <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-5 border-b border-slate-800 relative z-10">
+                <div>
+                  <h3 class="text-xl sm:text-2xl font-bold font-display text-white">CASSI — Caixa de Assistência dos Funcionários do Banco do Brasil</h3>
+                  <p class="text-sm font-semibold text-brand-400 mt-1">
+                    Atuação em Consulta de Banco de Dados e Processos Administrativos
+                  </p>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 text-xs font-bold whitespace-nowrap">
+                    10 Meses na CASSI
+                  </span>
+                </div>
+              </div>
+
+              <!-- Key points -->
+              <div class="mt-6 space-y-4 text-sm text-slate-300 relative z-10">
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-database"></i>
+                  </div>
+                  <div>
+                    <strong class="text-white">Consultas Estruturadas &amp; Extração SQL:</strong>
+                    Elaboração e execução de consultas em banco de dados relacional para levantamento de relatórios, validação cadastral e suporte técnico a demandas operacionais da instituição.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-sliders"></i>
+                  </div>
+                  <div>
+                    <strong class="text-white">Processos Administrativos:</strong>
+                    Apoio analítico e conferência no fluxo de trabalho administrativo de saúde suplementar, garantindo celeridade e acurácia no tratamento da informação.
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-3">
+                  <div class="w-6 h-6 rounded-lg bg-brand-500/20 text-brand-400 flex items-center justify-center text-xs flex-shrink-0 mt-0.5">
+                    <i class="fa-solid fa-shield-halved"></i>
+                  </div>
+                  <div>
+                    <strong class="text-white">Governança e Sigilo de Dados:</strong>
+                    Conformidade com normas de privacidade e integridade no trato com bases de dados corporativas de grande volume.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Tech badges -->
+              <div class="mt-6 pt-5 border-t border-slate-800 flex flex-wrap gap-2 text-xs relative z-10">
+                <span class="px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 font-medium">SQL</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 font-medium">Banco de Dados Relacional</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 font-medium">Excel</span>
+                <span class="px-3 py-1 rounded-lg bg-slate-800/80 border border-slate-700 text-slate-300 font-medium">Processos Administrativos</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- EDUCATION & CERTIFICATIONS (FORMAÇÃO ACADÊMICA CEUB & INTERNACIONAL) -->
+    <section id="formacao" class="py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-500/10 border border-brand-500/20 text-xs font-bold text-brand-400 uppercase tracking-wider mb-2">
+            <i class="fa-solid fa-building-columns"></i>
+            <span>Educação Superior &amp; Idioma</span>
+          </div>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Formação Acadêmica &amp; Internacional</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Histórico acadêmico formal e imersão linguística conforme registrado no currículo oficial.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          
+          <!-- Graduação: Curso Tecnólogo em ADS no CEUB -->
+          <div class="tilt-card relative bg-gradient-to-b from-slate-900 to-[#05070b] rounded-3xl p-8 border-2 border-brand-500/40 shadow-xl flex flex-col justify-between group hover:border-brand-400 transition-all" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="absolute -top-3.5 right-6 bg-brand-600 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md z-20">
+              Graduação
+            </div>
+
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-graduation-cap"></i>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-xs font-bold text-brand-400">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Centro Universitário de Brasília - CEUB</span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white mt-1.5">Curso Tecnólogo em Análise e Desenvolvimento de Sistemas</h3>
+              <p class="text-xs text-brand-300 font-semibold mt-1">Início: 07/2022 • Final: 11/2025</p>
+
+              <div class="mt-5 space-y-2.5 text-xs text-slate-300">
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                  <span>Engenharia de software, modelagem relacional e comandos SQL.</span>
+                </p>
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-brand-400 mt-1"></i>
+                  <span>Desenvolvimento Web full-stack, segurança de dados e padrões de projeto.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 relative z-10">
+              <span>Status: <strong class="text-emerald-400">Concluído</strong></span>
+              <span>Brasília - DF</span>
+            </div>
+          </div>
+
+          <!-- Pós-Graduação: Ciência de Dados no CEUB -->
+          <div class="tilt-card relative bg-gradient-to-b from-slate-900 to-[#05070b] rounded-3xl p-8 border-2 border-cyanAccent-500/40 shadow-xl flex flex-col justify-between group hover:border-cyanAccent-400 transition-all" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="absolute -top-3.5 right-6 bg-cyanAccent-600 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md flex items-center gap-1.5 z-20">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              Em Andamento
+            </div>
+
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-cyanAccent-500/20 text-cyanAccent-400 flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-chart-pie"></i>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-xs font-bold text-cyanAccent-300">
+                <i class="fa-solid fa-building-columns"></i>
+                <span>Centro Universitário de Brasília - CEUB</span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white mt-1.5">Pós-Graduação em Ciência de Dados</h3>
+              <p class="text-xs text-cyanAccent-300 font-semibold mt-1">Início: 07/2026 • Final: 07/2027</p>
+
+              <div class="mt-5 space-y-2.5 text-xs text-slate-300">
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-cyanAccent-400 mt-1"></i>
+                  <span>Pipeline de ETL, mineração estatística e visualização em Python.</span>
+                </p>
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-cyanAccent-400 mt-1"></i>
+                  <span>Modelagem analítica com dados reais e suporte à tomada de decisão.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 relative z-10">
+              <span>Status: <strong class="text-cyanAccent-400">Cursando</strong></span>
+              <span>Brasília - DF</span>
+            </div>
+          </div>
+
+          <!-- Curso Internacional de Inglês EC Manchester -->
+          <div class="tilt-card relative bg-gradient-to-b from-slate-900 to-[#05070b] rounded-3xl p-8 border border-slate-800 shadow-xl flex flex-col justify-between group hover:border-slate-700 transition-all" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="absolute -top-3.5 right-6 bg-slate-800 text-slate-200 text-[11px] font-bold uppercase tracking-wider px-3.5 py-1 rounded-full shadow-md z-20">
+              Internacional
+            </div>
+
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-sky-500/20 text-sky-400 flex items-center justify-center text-xl mb-5">
+                <i class="fa-solid fa-earth-europe"></i>
+              </div>
+              
+              <div class="flex items-center gap-1.5 text-xs font-semibold text-slate-400">
+                <i class="fa-solid fa-location-dot text-rose-400"></i>
+                <span>Manchester, Reino Unido</span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white mt-1.5">General English Course — Avançado</h3>
+              <p class="text-xs text-sky-300 font-semibold mt-1">EC Manchester English Language School • 03/2019 a 07/2019</p>
+
+              <div class="mt-5 space-y-2.5 text-xs text-slate-300">
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                  <span>Fluência em comunicação oral e escrita em ambientes profissionais.</span>
+                </p>
+                <p class="flex items-start gap-2">
+                  <i class="fa-solid fa-check text-sky-400 mt-1"></i>
+                  <span>Leitura técnica de documentações em inglês sem barreiras linguísticas.</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400 relative z-10">
+              <span>Status: <strong class="text-white">Concluído</strong></span>
+              <span>Manchester, UK</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- SKILLS SECTION (HABILIDADES OFICIAIS DO CURRÍCULO) -->
+    <section id="habilidades" class="py-24 bg-slate-900/20 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-brand-400 bg-brand-500/10 px-3 py-1 rounded-full border border-brand-500/20">Competências</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">Habilidades Técnicas &amp; Comportamentais</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Conjunto de competências extraído fielmente do currículo profissional atualizado de Enzo Roncisvale.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          
+          <!-- Habilidades Técnicas -->
+          <div class="tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] border border-slate-800 rounded-3xl p-8 shadow-xl relative" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="flex items-center gap-3 pb-4 border-b border-slate-800 mb-6 relative z-10">
+              <div class="w-10 h-10 rounded-xl bg-cyanAccent-500/20 text-cyanAccent-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-code"></i>
+              </div>
+              <h3 class="text-lg font-bold font-display text-white">Habilidades Técnicas</h3>
+            </div>
+
+            <div class="space-y-4 text-xs relative z-10">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-database text-cyanAccent-400"></i> SQL e Modelagem de dados
+                </span>
+                <span class="text-cyanAccent-400 font-bold">CASSI &amp; CEUB</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-brands fa-html5 text-orange-400"></i> HTML 5 e CSS 3
+                </span>
+                <span class="text-slate-300 font-bold">Sólido</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-brands fa-js text-yellow-400"></i> JavaScript
+                </span>
+                <span class="text-slate-300 font-bold">Intermediário</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-file-excel text-emerald-400"></i> Excel intermediário
+                </span>
+                <span class="text-slate-300 font-bold">Corporativo</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-chart-column text-amber-400"></i> Power BI
+                </span>
+                <span class="text-slate-300 font-bold">Dashboards</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Habilidades Interpessoais & Idioma -->
+          <div class="tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] border border-slate-800 rounded-3xl p-8 shadow-xl relative" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="flex items-center gap-3 pb-4 border-b border-slate-800 mb-6 relative z-10">
+              <div class="w-10 h-10 rounded-xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-lg">
+                <i class="fa-solid fa-user-check"></i>
+              </div>
+              <h3 class="text-lg font-bold font-display text-white">Comportamentais &amp; Idioma</h3>
+            </div>
+
+            <div class="space-y-4 text-xs relative z-10">
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-earth-americas text-sky-400"></i> Fluência em inglês
+                </span>
+                <span class="text-sky-300 font-bold">EC Manchester (UK)</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-comments text-emerald-400"></i> Facilidade em comunicação e interação
+                </span>
+                <span class="text-emerald-300 font-bold">Interpessoal</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-bolt text-amber-400"></i> Proatividade
+                </span>
+                <span class="text-amber-300 font-bold">Atitude</span>
+              </div>
+
+              <div class="p-3 rounded-xl bg-slate-900/80 border border-slate-800 flex items-center justify-between">
+                <span class="font-semibold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-fire text-rose-400"></i> Engajamento e interesse em atividades da área
+                </span>
+                <span class="text-rose-300 font-bold">Evolução Contínua</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- CONTACT SECTION (VAMOS CONVERSAR?) -->
+    <section id="contato" class="py-24 bg-slate-900/30 border-t border-slate-800/80">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="text-center max-w-3xl mx-auto mb-16">
+          <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-500/10 px-3 py-1 rounded-full border border-emerald-500/20">Canais Diretos</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-3">Entre em Contato</h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-3">
+            Estou à disposição para entrevistas e oportunidades em Banco de Dados, Dados e Sistemas.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          
+          <!-- Card WhatsApp / Telefone -->
+          <a href="https://wa.me/5561982217080?text=Ol%C3%A1%20Enzo,%20vi%20seu%20curr%C3%ADculo%20e%20gostaria%20de%20conversar!" target="_blank" rel="noopener noreferrer" class="tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] hover:border-emerald-500/80 border border-slate-800 rounded-3xl p-6 transition duration-300 group flex flex-col justify-between shadow-xl relative" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-whatsapp"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-emerald-400 transition-colors">Telefone / WhatsApp</h3>
+              <p class="text-xs text-slate-300 mt-1 font-semibold">(61) 98221-7080</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Brasília - DF</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800 flex items-center text-xs font-semibold text-emerald-400 gap-1.5 relative z-10">
+              <span>Mandar mensagem</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </div>
+          </a>
+
+          <!-- Card LinkedIn -->
+          <a href="https://www.linkedin.com/in/enzo-roncisvale-164890215/" target="_blank" rel="noopener noreferrer" class="tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] hover:border-blue-500/80 border border-slate-800 rounded-3xl p-6 transition duration-300 group flex flex-col justify-between shadow-xl relative" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-blue-600/20 text-blue-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-linkedin-in"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-blue-400 transition-colors">LinkedIn</h3>
+              <p class="text-xs text-slate-300 mt-1 font-semibold">Enzo Roncisvale</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Conecte-se comigo</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800 flex items-center text-xs font-semibold text-blue-400 gap-1.5 relative z-10">
+              <span>Acessar perfil</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </div>
+          </a>
+
+          <!-- Card E-mail (Copiar com 1 clique) -->
+          <div onclick="copyEmail()" class="cursor-pointer tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] hover:border-brand-500/80 border border-slate-800 rounded-3xl p-6 transition duration-300 group flex flex-col justify-between shadow-xl relative" title="Clique para copiar o e-mail" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-brand-500/20 text-brand-400 flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-solid fa-envelope"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-brand-400 transition-colors">E-mail</h3>
+              <p class="text-xs text-slate-300 mt-1 font-mono break-all font-semibold">enzoroncisvale@gmail.com</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800 flex items-center text-xs font-semibold text-brand-400 gap-1.5 relative z-10">
+              <span id="emailCopyText">Clique para copiar</span>
+              <i class="fa-regular fa-copy text-[10px]"></i>
+            </div>
+          </div>
+
+          <!-- Card GitHub -->
+          <a href="https://github.com/EnzoRoncisvale" target="_blank" rel="noopener noreferrer" class="tilt-card bg-gradient-to-b from-slate-900/90 to-[#05070b] hover:border-slate-600 border border-slate-800 rounded-3xl p-6 transition duration-300 group flex flex-col justify-between shadow-xl relative" data-tilt>
+            <div class="card-spotlight pointer-events-none absolute inset-0 rounded-3xl opacity-0 transition-opacity duration-300"></div>
+            <div class="relative z-10">
+              <div class="w-12 h-12 rounded-2xl bg-white/10 text-white flex items-center justify-center text-2xl mb-4 group-hover:scale-110 transition-transform">
+                <i class="fa-brands fa-github"></i>
+              </div>
+              <h3 class="text-base font-bold text-white group-hover:text-slate-200 transition-colors">GitHub</h3>
+              <p class="text-xs text-slate-300 mt-1 font-semibold">Enzo Roncisvale</p>
+              <p class="text-[11px] text-slate-400 mt-0.5">Repositórios públicos</p>
+            </div>
+            <div class="pt-4 mt-4 border-t border-slate-800 flex items-center text-xs font-semibold text-white gap-1.5 relative z-10">
+              <span>github.com/EnzoRoncisvale</span>
+              <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+            </div>
+          </a>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FLOATING RAYCAST-STYLE QUICK DOCK (TENDÊNCIA 2026) -->
+  <aside class="fixed bottom-6 left-1/2 -translate-x-1/2 z-40 hidden sm:flex items-center gap-1.5 px-3 py-2 rounded-2xl floating-dock">
+    <a href="#inicio" class="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-slate-800/80 transition" title="Início">
+      <i class="fa-solid fa-house text-xs"></i>
+    </a>
+    <button onclick="openCommandPalette()" class="p-2 rounded-xl text-cyanAccent-400 hover:text-white hover:bg-slate-800/80 transition" title="Busca Rápida (Ctrl + K)">
+      <i class="fa-solid fa-terminal text-xs"></i>
+    </button>
+    <span class="w-[1px] h-4 bg-slate-800"></span>
+    <a href="#projetos" class="px-2.5 py-1 rounded-xl text-[11px] font-semibold text-amber-400 hover:bg-amber-500/10 transition" title="Deploys Vercel">
+      <i class="fa-solid fa-bolt mr-1"></i> Vercel Apps
+    </a>
+    <a href="#sql-playground" class="px-2.5 py-1 rounded-xl text-[11px] font-semibold text-cyanAccent-400 hover:bg-cyanAccent-500/10 transition" title="Simulador SQL">
+      <i class="fa-solid fa-terminal mr-1"></i> SQL Lab
+    </a>
+    <a href="#experiencia" class="px-2.5 py-1 rounded-xl text-[11px] font-semibold text-emerald-400 hover:bg-emerald-500/10 transition" title="Experiência CASSI">
+      <i class="fa-solid fa-building mr-1"></i> CASSI
+    </a>
+    <span class="w-[1px] h-4 bg-slate-800"></span>
+    <button onclick="openCvModal()" class="px-2.5 py-1 rounded-xl text-[11px] font-semibold text-rose-400 hover:bg-rose-500/10 transition" title="Ver Currículo Oficial">
+      <i class="fa-solid fa-file-pdf mr-1"></i> Currículo
+    </button>
+    <a href="Curriculo_Enzo_Roncisvale.pdf" download="Curriculo_Enzo_Roncisvale.pdf" class="px-2.5 py-1 rounded-xl text-[11px] font-semibold text-rose-300 hover:text-white hover:bg-rose-500/20 transition" title="Baixar Arquivo PDF">
+      <i class="fa-solid fa-file-arrow-down text-rose-400 mr-1"></i> PDF
+    </a>
+    <a href="https://wa.me/5561982217080" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl text-emerald-400 hover:text-emerald-300 hover:bg-emerald-500/10 transition" title="WhatsApp">
+      <i class="fa-brands fa-whatsapp text-sm"></i>
+    </a>
+  </aside>
+
+  <!-- FOOTER -->
+  <footer class="border-t border-slate-800 bg-[#040508] py-12 relative z-10 pb-24 sm:pb-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-6 text-center sm:text-left">
+      <div class="flex items-center gap-3.5">
+        <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-brand-600 to-cyanAccent-400 p-[1.5px]">
+          <div class="w-full h-full bg-[#05070b] rounded-[9px] flex items-center justify-center text-white font-bold text-xs">
+            ER
+          </div>
+        </div>
+        <div>
+          <span class="font-bold text-sm text-white">Enzo Roncisvale</span>
+          <span class="block text-[11px] text-slate-400">Interesse em Banco de Dados / Dados e Sistemas • Brasília - DF</span>
+        </div>
+      </div>
+
+      <p class="text-xs text-slate-400">
+        &copy; 2026 Enzo Roncisvale. Telefone: (61) 98221-7080 • enzoroncisvale@gmail.com
+      </p>
+
+      <div class="flex items-center gap-4 text-slate-400 text-sm">
+        <a href="https://github.com/EnzoRoncisvale" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors" title="GitHub"><i class="fa-brands fa-github text-base"></i></a>
+        <a href="https://www.linkedin.com/in/enzo-roncisvale-164890215/" target="_blank" rel="noopener noreferrer" class="hover:text-blue-400 transition-colors" title="LinkedIn"><i class="fa-brands fa-linkedin text-base"></i></a>
+        <a href="https://wa.me/5561982217080" target="_blank" rel="noopener noreferrer" class="hover:text-emerald-400 transition-colors" title="WhatsApp"><i class="fa-brands fa-whatsapp text-base"></i></a>
+        <a href="mailto:enzoroncisvale@gmail.com" class="hover:text-brand-400 transition-colors" title="E-mail"><i class="fa-solid fa-envelope text-base"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- TOAST FEEDBACK NOTIFICATION -->
+  <div id="toast" class="fixed bottom-20 left-1/2 -translate-x-1/2 z-50 bg-slate-800 border border-brand-500 text-white text-xs font-semibold px-4 py-2.5 rounded-xl shadow-2xl flex items-center gap-2 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+    <i class="fa-solid fa-check text-emerald-400"></i>
+    <span id="toastMsg">E-mail copiado com sucesso!</span>
+  </div>
+
+  <!-- PRINT-ONLY CV RESUME (100% FIEL AO CURRÍCULO OFICIAL DO USUÁRIO) -->
+  <div id="printResume" class="hidden">
+    <div class="print-container">
+      <div class="print-header">
+        <h1 style="font-size: 26pt; font-weight: 800; margin: 0; line-height: 1.1;">Enzo<br>Roncisvale</h1>
+        <h2 style="font-size: 11pt; font-weight: 700; color: #1e293b; letter-spacing: 0.5pt; margin-top: 6pt; margin-bottom: 8pt; text-transform: uppercase;">INTERESSE EM BANCO DE DADOS / DADOS E SISTEMAS</h2>
+        <div class="print-contact" style="font-size: 9.5pt; color: #334155; display: flex; flex-wrap: wrap; gap: 12pt; border-top: 1pt solid #cbd5e1; padding-top: 6pt;">
+          <span>📞 <strong>Telefone:</strong> (61) 98221-7080</span>
+          <span>📍 <strong>Brasília-DF</strong></span>
+          <span>✉️ <strong>enzoroncisvale@gmail.com</strong></span>
+          <span>💻 <strong>GitHub:</strong> Enzo Roncisvale</span>
+          <span>🔗 <strong>LinkedIn:</strong> Enzo Roncisvale</span>
+        </div>
+      </div>
+
+      <div class="print-section" style="margin-top: 14pt;">
+        <h3>OBJETIVO</h3>
+        <p style="font-size: 10pt; line-height: 1.5; color: #1e293b;">
+          Tenho buscado evoluir constantemente, realizando cursos de TI e aprimorando meus conhecimentos. Estou em busca de uma oportunidade para ingressar na área.
+        </p>
+      </div>
+
+      <div class="print-section" style="margin-top: 12pt;">
+        <h3>HABILIDADES</h3>
+        <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 4pt; padding-left: 14pt; font-size: 9.5pt;">
+          <li>HTML 5 e CSS 3</li>
+          <li>SQL e Modelagem de dados</li>
+          <li>JavaScript</li>
+          <li>Excel intermediário</li>
+          <li>Power BI</li>
+          <li>Engajamento e interesse em atividades da área</li>
+          <li>Facilidade em comunicação e interação</li>
+          <li>Fluência em inglês</li>
+          <li>Proatividade</li>
+        </ul>
+      </div>
+
+      <div class="print-section" style="margin-top: 12pt;">
+        <h3>PROJETOS PESSOAIS</h3>
+        <div style="margin-bottom: 8pt;">
+          <p style="font-size: 9.5pt; line-height: 1.45; margin: 0;">
+            <strong>Sistema de Chat Seguro:</strong> Desenvolvi um sistema de chat que exige cadastro, armazena dados no banco e restringe a comunicação a usuários registrados. O projeto inclui cadastro seguro, autenticação, mensagens privadas e medidas de segurança. Utilizando <strong>HTML, CSS e PHP</strong>.
+          </p>
+        </div>
+        <div>
+          <p style="font-size: 9.5pt; line-height: 1.45; margin: 0;">
+            <strong>Aplicação de Marcação de Partidas Esportivas:</strong> Desenvolvimento de um aplicativo para criação e visualização de partidas esportivas em um mapa, permitindo:
+          </p>
+          <ul style="font-size: 9pt; padding-left: 14pt; margin-top: 2pt;">
+            <li>Marcação de local, horário e tipo de esporte</li>
+            <li>Armazenamento das informações em banco de dados</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="print-section" style="margin-top: 12pt;">
+        <h3>EXPERIÊNCIA</h3>
+        <p style="font-size: 10pt; font-weight: 700; color: #0f172a; margin: 0;">
+          10 MESES NA CASSI. ATUANDO EM CONSULTA DE BANCO DE DADOS E PROCESSOS ADMINISTRATIVOS
+        </p>
+      </div>
+
+      <div class="print-section" style="margin-top: 12pt;">
+        <h3>FORMAÇÃO</h3>
+        <ul style="padding-left: 14pt; font-size: 9.5pt; line-height: 1.5;">
+          <li>
+            <strong>Centro Universitário de Brasília - CEUB</strong><br>
+            Curso Tecnólogo em Análise e Desenvolvimento de Sistemas<br>
+            <span style="color: #64748b;">Início: 07/2022. Final: 11/2025</span>
+          </li>
+          <li style="margin-top: 6pt;">
+            <strong>Centro Universitário de Brasília - CEUB</strong><br>
+            Pós graduação em ciência de dados<br>
+            <span style="color: #64748b;">Início: 07/2026. Final: 07/2027</span>
+          </li>
+          <li style="margin-top: 6pt;">
+            <strong>EC Manchester English Language School</strong><br>
+            General English course in Manchester - Avançado<br>
+            <span style="color: #64748b;">Início: 03/2019. Final: 07/2019</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+  <!-- ==========================================================================
+       MODAL INTERATIVO DO CURRÍCULO (CANTO SUPERIOR DIREITO)
+       ========================================================================== -->
+  <div id="cvModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden flex items-center justify-center p-3 sm:p-6 opacity-0 transition-opacity duration-300">
+    <div class="relative w-full max-w-4xl max-h-[92vh] bg-slate-950 border border-slate-800 rounded-3xl shadow-2xl flex flex-col overflow-hidden">
+      <!-- Modal Header -->
+      <div class="p-5 sm:p-6 border-b border-slate-800 flex items-center justify-between bg-slate-900/60">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-600 to-amber-500 text-white flex items-center justify-center text-lg shadow-md shadow-rose-500/20">
+            <i class="fa-solid fa-file-pdf"></i>
+          </div>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold font-display text-white">Currículo Oficial — Enzo Roncisvale</h3>
+            <span class="text-xs text-cyanAccent-400 font-mono">Interesse em Banco de Dados / Dados e Sistemas • Brasília-DF</span>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <a href="Curriculo_Enzo_Roncisvale.pdf" download="Curriculo_Enzo_Roncisvale.pdf" class="px-3.5 py-2 rounded-xl bg-gradient-to-r from-rose-600 to-rose-500 hover:from-rose-500 hover:to-rose-400 text-white font-bold text-xs flex items-center gap-2 shadow transition">
+            <i class="fa-solid fa-download text-xs"></i>
+            <span>Baixar PDF (68 KB)</span>
+          </a>
+          <button onclick="closeCvModal()" class="w-9 h-9 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center text-sm transition" title="Fechar (Esc)">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Modal Body (A4 Paper Document Preview) -->
+      <div class="p-4 sm:p-8 overflow-y-auto flex-1 bg-slate-900/40">
+        <div class="mx-auto max-w-3xl bg-white text-slate-900 rounded-2xl p-6 sm:p-10 shadow-xl border border-slate-200">
+          <!-- Document Header -->
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center pb-5 border-b border-slate-200 gap-4">
+            <div>
+              <h1 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-slate-950 font-display leading-tight">
+                Enzo<br>Roncisvale
+              </h1>
+              <h2 class="text-xs font-bold tracking-wider text-slate-800 uppercase mt-2">
+                INTERESSE EM BANCO DE DADOS / DADOS E SISTEMAS
+              </h2>
+            </div>
+            <div class="space-y-1.5 text-xs text-slate-700 font-medium">
+              <div>📞 <strong>Telefone:</strong> (61) 98221-7080</div>
+              <div>📍 <strong>Brasília-DF</strong></div>
+              <div>✉️ <a href="mailto:enzoroncisvale@gmail.com" class="hover:underline">enzoroncisvale@gmail.com</a></div>
+              <div>🐙 <a href="https://github.com/EnzoRoncisvale" target="_blank" class="hover:underline font-bold">Enzo Roncisvale</a></div>
+              <div>🔗 <a href="https://www.linkedin.com/in/enzo-roncisvale-164890215/" target="_blank" class="hover:underline font-bold">Enzo Roncisvale</a></div>
+            </div>
+          </div>
+
+          <!-- Original Divider o---o -->
+          <div class="my-5 relative flex items-center justify-between">
+            <span class="w-2.5 h-2.5 rounded-full border border-slate-900 bg-white"></span>
+            <span class="flex-1 h-[1.5px] bg-slate-900 mx-1"></span>
+            <span class="w-2.5 h-2.5 rounded-full border border-slate-900 bg-white"></span>
+          </div>
+
+          <!-- Objetivo -->
+          <div class="mb-5">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-950 mb-1.5">OBJETIVO</h3>
+            <p class="text-xs sm:text-sm text-slate-800 leading-relaxed font-normal">
+              Tenho buscado evoluir constantemente, realizando cursos de TI e aprimorando meus conhecimentos. Estou em busca de uma oportunidade para ingressar na área.
+            </p>
+          </div>
+
+          <!-- Habilidades -->
+          <div class="mb-5">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-950 mb-2">HABILIDADES</h3>
+            <ul class="grid grid-cols-1 sm:grid-cols-2 gap-y-1 gap-x-6 text-xs sm:text-sm text-slate-800 list-disc list-inside">
+              <li>HTML 5 e CSS 3</li>
+              <li>SQL e Modelagem de dados</li>
+              <li>JavaScript</li>
+              <li>Excel intermediário</li>
+              <li>Power BI</li>
+              <li>Engajamento e interesse em atividades da área</li>
+              <li>Facilidade em comunicação e interação</li>
+              <li>Fluencia em inglês</li>
+              <li>Proatividade</li>
+            </ul>
+          </div>
+
+          <!-- Projetos Pessoais -->
+          <div class="mb-5">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-950 mb-2">PROJETOS PESSOAIS</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-slate-800">
+              <div>
+                <p><strong>Sistema de Chat Seguro:</strong> Desenvolvi um sistema de chat que exige cadastro, armazena dados no banco e restringe a comunicação a usuários registrados. O projeto inclui cadastro seguro, autenticação, mensagens privadas e medidas de segurança. Utilizando <strong>HTML, CSS e PHP</strong>.</p>
+              </div>
+              <div>
+                <p class="font-bold text-slate-950">Aplicação de Marcação de Partidas Esportivas</p>
+                <p class="mt-0.5">Desenvolvimento de um aplicativo para criação e visualização de partidas esportivas em um mapa, permitindo:</p>
+                <ul class="list-disc list-inside pl-2 text-slate-700 space-y-0.5">
+                  <li>Marcação de local, horário e tipo de esporte</li>
+                  <li>Armazenamento das informações em banco de dados</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experiência -->
+          <div class="mb-5">
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-950 mb-1.5">EXPERIÊNCIA</h3>
+            <p class="text-xs sm:text-sm font-bold text-slate-950">
+              10 MESES NA CASSI. ATUANDO EM CONSULTA DE BANCO DE DADOS E PROCESSOS ADMNISTRATIVOS
+            </p>
+          </div>
+
+          <!-- Original Divider o---o -->
+          <div class="my-5 relative flex items-center justify-between">
+            <span class="w-2.5 h-2.5 rounded-full border border-slate-900 bg-white"></span>
+            <span class="flex-1 h-[1.5px] bg-slate-900 mx-1"></span>
+            <span class="w-2.5 h-2.5 rounded-full border border-slate-900 bg-white"></span>
+          </div>
+
+          <!-- Formação -->
+          <div>
+            <h3 class="text-xs font-bold uppercase tracking-wider text-slate-950 mb-2">FORMAÇÃO</h3>
+            <div class="space-y-3 text-xs sm:text-sm text-slate-800">
+              <div>
+                <strong class="text-slate-950 font-bold">Centro Universitário de Brasília - CEUB</strong><br>
+                <span>Curso Tecnólogo em Análise e Desenvolvimento de Sistemas</span><br>
+                <span class="text-slate-500">Início: 07/2022. Final: 11/2025</span>
+              </div>
+              <div>
+                <strong class="text-slate-950 font-bold">Centro Universitário de Brasília - CEUB</strong><br>
+                <span>Pós graduação em ciência de dados</span><br>
+                <span class="text-slate-500">Início: 07/2026. Final: 07/2027</span>
+              </div>
+              <div>
+                <strong class="text-slate-950 font-bold">EC Manchester English Language School</strong><br>
+                <span>General English course in Manchester - Avançado</span><br>
+                <span class="text-slate-500">Início: 03/2019. Final: 07/2019</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="p-4 sm:p-5 border-t border-slate-800 flex items-center justify-between bg-slate-900/60 text-xs">
+        <span class="text-slate-400">PDF Oficial de Enzo Roncisvale</span>
+        <div class="flex items-center gap-2">
+          <button onclick="copyResumeData()" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition">
+            <i class="fa-regular fa-copy mr-1"></i> Copiar Texto
+          </button>
+          <a href="Curriculo_Enzo_Roncisvale.pdf" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white transition">
+            <i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> Abrir em Nova Aba
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL COMMAND PALETTE (RAYCAST / SPOTLIGHT CTRL+K)
+       ========================================================================== -->
+  <div id="cmdPaletteModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-xl hidden flex items-start justify-center pt-20 p-4 opacity-0 transition-opacity duration-200">
+    <div class="relative w-full max-w-xl bg-slate-950 border border-slate-700/80 rounded-3xl shadow-2xl overflow-hidden">
+      <!-- Search Input -->
+      <div class="p-4 border-b border-slate-800 flex items-center gap-3 bg-slate-900/60">
+        <i class="fa-solid fa-terminal text-cyanAccent-400 text-sm"></i>
+        <input type="text" id="cmdInput" placeholder="Digite um comando, projeto ou tecnologia..." class="w-full bg-transparent text-sm text-white placeholder-slate-500 focus:outline-none" oninput="filterCmdPalette()">
+        <kbd class="px-2 py-0.5 rounded bg-slate-800 border border-slate-700 text-[10px] text-slate-400">ESC</kbd>
+      </div>
+
+      <!-- Command List -->
+      <div class="p-2 max-h-80 overflow-y-auto space-y-1 text-xs" id="cmdList">
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('https://mia-crm-prototipo.vercel.app')">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-robot text-amber-400"></i>
+            <span>Abrir MIA CRM (Deploy Vercel)</span>
+          </div>
+          <span class="text-[10px] text-amber-400 font-mono">vercel.app</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('https://marca-ai-kappa.vercel.app')">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-futbol text-rose-400"></i>
+            <span>Abrir Marca Aí! (Deploy Vercel)</span>
+          </div>
+          <span class="text-[10px] text-rose-400 font-mono">vercel.app</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('https://alerta-encosta.vercel.app/')">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-triangle-exclamation text-cyanAccent-400"></i>
+            <span>Abrir AlertaEncosta (Deploy Vercel)</span>
+          </div>
+          <span class="text-[10px] text-cyanAccent-400 font-mono">vercel.app</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('https://github.com/EnzoRoncisvale/P-s-Gradua-o-em-ciencia-de-dados')">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-chart-pie text-brand-400"></i>
+            <span>Ver Pipeline ETL PDAD/DF (CODEPLAN)</span>
+          </div>
+          <span class="text-[10px] text-brand-400 font-mono">github.com</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="closeCommandPalette(); openCvModal();">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-file-pdf text-rose-400"></i>
+            <span>Ver Currículo Oficial de Enzo (Modal)</span>
+          </div>
+          <span class="text-[10px] text-slate-400 font-mono">68 KB</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('Curriculo_Enzo_Roncisvale.pdf', true)">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-download text-emerald-400"></i>
+            <span>Baixar Arquivo Curriculo_Enzo_Roncisvale.pdf</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-mono">download</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="closeCommandPalette(); location.href='#sql-playground';">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-terminal text-cyanAccent-400"></i>
+            <span>Ir para Laboratório SQL Interativo</span>
+          </div>
+          <span class="text-[10px] text-cyanAccent-400 font-mono">#sql</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="closeCommandPalette(); location.href='#experiencia';">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-solid fa-building text-emerald-400"></i>
+            <span>Ver Atuação na CASSI (10 Meses)</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-mono">#cassi</span>
+        </div>
+
+        <div class="cmd-item px-3 py-2.5 rounded-xl hover:bg-brand-600/20 text-slate-200 hover:text-white flex items-center justify-between cursor-pointer transition" onclick="execCmd('https://wa.me/5561982217080')">
+          <div class="flex items-center gap-2.5">
+            <i class="fa-brands fa-whatsapp text-emerald-400"></i>
+            <span>Falar com Enzo no WhatsApp (61) 98221-7080</span>
+          </div>
+          <span class="text-[10px] text-emerald-400 font-mono">wa.me</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>
